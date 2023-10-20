@@ -1,0 +1,20 @@
+{"1.2.0",
+[{<<"argparse">>,{pkg,<<"argparse">>,<<"1.2.4">>},1},
+ {<<"bson">>,
+  {git,"git@github.com:comtihon/bson-erlang.git",
+       {ref,"f5a8c7030dd0107d2eed99059bc09c53ebe5e5dd"}},
+  0},
+ {<<"erlperf">>,
+  {git,"git@github.com:max-au/erlperf.git",
+       {ref,"bcb318f7244f0327f87b59de39db52c55e1c5d8e"}},
+  0},
+ {<<"nbson">>,
+  {git,"git@github.com:nomasystems/nbson.git",
+       {ref,"e589f9d4b49ba6a0c365d714eb6a5e4ca603e17a"}},
+  0}]}.
+[
+{pkg_hash,[
+ {<<"argparse">>, <<"A31E7C5D9F8814AFCD9B42C1B98C21DA6F851F93F2C8C00C107F6201668A0A7D">>}]},
+{pkg_hash_ext,[
+ {<<"argparse">>, <<"AC6FDB7183EA20ADEB7EB66E34B21F2E8C4C6925913EE0C0765D339D97009FFE">>}]}
+].

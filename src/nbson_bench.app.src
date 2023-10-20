@@ -1,0 +1,11 @@
+{application, nbson_bench,
+ [{description, "An OTP library benchmarking nbson"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {links, []}
+ ]}.
