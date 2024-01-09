@@ -58,14 +58,14 @@ bench_encode() ->
     ?SEPARATOR.
 
 profile_decode() ->
-    Path = "bench/test1.bson",
+    Path = ?BENCH_DIR("test1.bson"),
     {ok, Bin} = file:read_file(Path),
     eflambe:apply({nbson, decode, [Bin]}, [{output_format, brendan_gregg}]).
 
 profile_encode() ->
-    Path = "bench/test1.bson",
+    Path = ?BENCH_DIR("test1.bson"),
     {ok, Bin} = file:read_file(Path),
-    B = nbson:decode(Bin),
+    {ok, B} = nbson:decode(Bin),
     eflambe:apply({nbson, encode, [B]}, [{output_format, brendan_gregg}]).
 
 %%%-----------------------------------------------------------------------------
@@ -73,7 +73,7 @@ profile_encode() ->
 %%%-----------------------------------------------------------------------------
 head() ->
     io:format("~20.. s  ~20.. s  ~20.. s  ~20.. s~n",
-              ["Size (documents)", "File size (bytes)", "Nbson Time (us)", "BsonErlang Time (us)"]).
+              ["Size (documents)", "File size (bytes)", "Nbson Time (µs)", "BsonErlang Time (µs)"]).
  
 bench_decode(Path, Times) ->
     {ok, Bin} = file:read_file(Path),
@@ -83,29 +83,22 @@ bench_decode(Path, Times) ->
     io:format("~20.. s  ~20.. B  ~20.. B  ~20.. B~n",
               [DocCount,
                byte_size(Bin),
-               round(NbsonTimeDecode/Times),
-               round(BsonErlangTimeDecode/Times)]).
+               NbsonTimeDecode,
+               BsonErlangTimeDecode]).
 
 bench_encode(Path, Times) ->
     {ok, Bin} = file:read_file(Path),
     DocCount = doc_count(Path),
-    NbsonTimeEncode = if
-                    DocCount > 1 ->
-                        {ok, NbsonDocs} = nbson:decode(Bin),
-                        erlperf:time(fun() -> nbson:encode(NbsonDocs) end, Times);
-                    true ->
-                        {ok, NbsonDocs} = nbson:decode(Bin),
-                        erlperf:time(fun() -> nbson:encode(NbsonDocs) end, Times)
-                end,
+    {ok, NbsonDocs} = nbson:decode(Bin),
+    NbsonTimeEncode = erlperf:time(fun() -> nbson:encode(NbsonDocs) end, Times),
 
-    {BsonErlangDocs, _Rest2} = get_docs(Bin, []),
-
+    {BsonErlangDocs, <<>>} = get_docs(Bin, []),
     BsonErlangTimeEncode = erlperf:time(fun() -> put_docs(BsonErlangDocs) end, Times),
     io:format("~20.. s  ~20.. B  ~20.. B  ~20.. B~n",
               [DocCount,
                byte_size(Bin),
-               round(NbsonTimeEncode/Times),
-               round(BsonErlangTimeEncode/Times)]).
+               NbsonTimeEncode,
+               BsonErlangTimeEncode]).
 
 % get_docs implementation extracted from https://github.com/comtihon/mongodb-erlang/blob/56c700f791601a201a9d5af7cad45b3c81258209/src/connection/mongo_protocol.erl#L113
 get_docs(<<>>, Docs) ->

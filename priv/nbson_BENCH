@@ -7,7 +7,7 @@
 -define(BSONS_PATH, "priv/data/").
 -define(SEPARATOR, io:format("--------------------------------------------------------------------------------------~n")).
 -define(TABLE_HEADER, io:format
-    ("~20.. s  ~20.. s  ~20.. s  ~20.. s~n", ["Size (documents)", "File size (bytes)", "Nbson Time (us)", "BsonErlang Time (us)"])).
+    ("~20.. s  ~20.. s  ~20.. s  ~20.. s~n", ["Size (documents)", "File size (bytes)", "Nbson Time (µs)", "BsonErlang Time (µs)"])).
 
 
 extra_deps() ->
