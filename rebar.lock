@@ -4,17 +4,24 @@
   {git,"git@github.com:comtihon/bson-erlang.git",
        {ref,"f5a8c7030dd0107d2eed99059bc09c53ebe5e5dd"}},
   0},
+ {<<"eflambe">>,
+  {git,"git@github.com:Stratus3D/eflambe.git",
+       {ref,"9105ea6c8d9b865646cd446673eb444d3f688c17"}},
+  0},
  {<<"erlperf">>,
   {git,"git@github.com:max-au/erlperf.git",
        {ref,"bcb318f7244f0327f87b59de39db52c55e1c5d8e"}},
   0},
+ {<<"meck">>,{pkg,<<"meck">>,<<"0.9.2">>},1},
  {<<"nbson">>,
   {git,"git@github.com:nomasystems/nbson.git",
        {ref,"e589f9d4b49ba6a0c365d714eb6a5e4ca603e17a"}},
   0}]}.
 [
 {pkg_hash,[
- {<<"argparse">>, <<"A31E7C5D9F8814AFCD9B42C1B98C21DA6F851F93F2C8C00C107F6201668A0A7D">>}]},
+ {<<"argparse">>, <<"A31E7C5D9F8814AFCD9B42C1B98C21DA6F851F93F2C8C00C107F6201668A0A7D">>},
+ {<<"meck">>, <<"85CCBAB053F1DB86C7CA240E9FC718170EE5BDA03810A6292B5306BF31BAE5F5">>}]},
 {pkg_hash_ext,[
- {<<"argparse">>, <<"AC6FDB7183EA20ADEB7EB66E34B21F2E8C4C6925913EE0C0765D339D97009FFE">>}]}
+ {<<"argparse">>, <<"AC6FDB7183EA20ADEB7EB66E34B21F2E8C4C6925913EE0C0765D339D97009FFE">>},
+ {<<"meck">>, <<"81344F561357DC40A8344AFA53767C32669153355B626EA9FCBC8DA6B3045826">>}]}
 ].
